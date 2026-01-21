@@ -1,0 +1,87 @@
+<% layout("/layout/boilerplate") %>
+  <div class="row mt-3">
+    <div class="col-8 offset-2">
+      <h3 class="new-t">Edit</h3>
+      <form method="POST" action="/listings/<%= listing._id %>?_method=PUT" enctype="multipart/form-data"
+        class="needs-validation">
+        <div class="row">
+          <div class="mb-4 col-md-8">
+            <label for="title" class="form-label">Title</label>
+            <input name="listing[title]" value="<%= listing.title %>" type="text" class="form-control" required />
+            <div class="valid-feedback">Looks good!</div>
+            <div class="invalid-feedback">This field is required.</div>
+          </div>
+          <div class="mb-4 col-md-4">
+            <label for="price" class="form-label">Price</label>
+            <input name="listing[price]" value="<%= listing.price %>" class="form-control" required />
+            <div class="invalid-feedback">This field is required.</div>
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label for="description" class="form-label">Description</label>
+          <textarea name="listing[description]" class="form-control" required> <%=listing.description%> </textarea>
+          <div class="valid-feedback">Looks good!</div>
+          <div class="invalid-feedback">This field is required.</div>
+        </div>
+
+        <div class="mb-3"> Original Image <br>
+          <img src="<%= originalImageUrl %>" alt="original image" />
+        </div>
+
+        <div class="mb-4">
+          <label for="image" class="form-label">Upload New Image</label>
+          <input name="listing[image]" type="file" class="form-control" />
+        </div>
+
+        <div class="row">
+          <div class="mb-4 col-md-6">
+            <label for="country" class="form-label">Country</label>
+            <input name="listing[country]" value="<%= listing.country %>" type="text" class="form-control" required />
+            <div class="invalid-feedback">This field is required.</div>
+          </div>
+          <div class="mb-4 col-md-6">
+            <label for="location" class="form-label">Location</label>
+            <input name="listing[location]" value="<%= listing.location %>" type="text" class="form-control" required />
+            <div class="invalid-feedback">This field is required.</div>
+          </div>
+        </div>
+        <div class="mb-4 col-md-6">
+          <label class="form-label">Category</label>
+          <select name="listing[category]" class="form-control" required>
+            <option value="">Select Category</option>
+            
+            <option value="Apartments" <%=listing.category==="Apartments" ? "selected" : "" %>>Apartment</option>
+            <option value="Hotels" <%=listing.category==="Hotels" ? "selected" : "" %>>Hotel</option>
+            <option value="Resorts" <%=listing.category==="Resorts" ? "selected" : "" %>>Resort</option>
+            <option value="Villas" <%=listing.category==="Villas" ? "selected" : "" %>>Villa</option>
+            <option value="GlampingSites" <%=listing.category==="GlampingSites" ? "selected" : "" %>>Glamping Site </option>
+            <option value="Rooms" <%=listing.category==="Rooms" ? "selected" : "" %>>Room</option>
+            <option value="Cabins" <%=listing.category==="Cabins" ? "selected" : "" %>>Cabin</option>
+            <option value="GuestRooms" <%=listing.category==="GuestRooms" ? "selected" : "" %>>Guest Room</option>
+            <option value="Hostels" <%=listing.category==="Hostels" ? "selected" : "" %>>Hostel</option>
+            <option value="FarmStays" <%=listing.category==="FarmStays" ? "selected" : "" %>>Farm Stay</option>
+            <option value="HouseBoats" <%=listing.category==="HouseBoats" ? "selected" : "" %>>House Boat</option>
+            <option value="Cottages" <%=listing.category==="Cottages" ? "selected" : "" %>>Cottage</option>
+            <option value="TreeHouses" <%=listing.category==="TreeHouses" ? "selected" : "" %>>Tree House</option>
+            <option value="Ryokans" <%=listing.category==="Ryokans" ? "selected" : "" %>>Ryokan</option>
+            <option value="Artic" <%=listing.category==="Artic" ? "selected" : "" %>>Artic</option>
+            <option value="Riads" <%=listing.category==="Riads" ? "selected" : "" %>>Riad</option>
+          </select>
+
+
+
+
+          <div class="invalid-feedback">This field is required.</div>
+        </div>
+
+
+
+
+
+
+
+        <button class="btne">Edit <i class="fa-solid fa-pencil"></i></button>
+      </form>
+    </div>
+  </div>

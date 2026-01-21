@@ -1,0 +1,447 @@
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container {
+  flex: 1;
+}
+
+.new-t {
+  color: rgb(10, 0, 151);
+}
+
+/* Navbar */
+.brand-text {
+  font-size: 1.4rem;
+  font-weight: 900;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  color: rgb(255, 21, 142);
+  margin-top: 0.4rem;
+}
+
+.navbar {
+  padding: 0.8rem 1rem;
+  border-bottom: 2px solid rgb(0, 129, 194);
+  background-color: rgb(218, 234, 255);
+  margin-bottom: 1rem;
+}
+
+.navbar .host-btn {
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 71, 185);
+  font-weight: 600;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  border: 3px solid rgb(0, 71, 185);
+  text-align: center;
+  padding: 9px;
+}
+
+.navbar .host-btn:hover {
+  box-shadow: 6px 6px 1px rgba(0, 71, 185, 0.845);
+  border: 3px solid rgb(0, 71, 185);
+  background-color: rgb(255, 255, 255);
+  color: rgb(0, 71, 185);
+}
+
+@media (max-width: 768px) {
+
+  .navbar-nav .nav-link,
+  .host-btn {
+    width: 100%;
+    margin: 8px 0;
+  }
+}
+
+.navbar .nav-link {
+  font-size: 1.2rem;
+  color: black;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  text-align: center;
+}
+
+
+/* Search Bar */
+.main-search {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 20px; 
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 900px;
+  position: relative; 
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.24);
+}
+
+/* Each segment */
+.search-segment {
+  display: flex;
+  flex-direction: column;
+  padding: 7px 10px 7px 20px;
+  border-radius: 20px;
+  transition: background 0.2s ease;
+  flex: 1;
+  min-width: 130px;
+}
+
+.search-segment:nth-child(1) {
+  min-width: 300px; /* Where */
+}
+
+.search-segment:nth-child(2),
+.search-segment:nth-child(3) {
+  min-width: 130px; /* When and Who */
+}
+
+.search-segment:hover {
+  background: #bcbcbc47;
+}
+
+.search-segment .label { /* Labels */
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #000;
+  line-height: 1;
+}
+
+.search-segment input { /* Input fields */
+  border: none;
+  outline: none;
+  font-size: 0.9rem;
+  background: transparent;
+  color: #5a5a5a;
+  width: 100%;
+}
+
+.search-segment input::placeholder {
+  color: #6d6d6d;
+}
+
+/* Divider */
+.divider {
+  width: 1px;
+  height: 40px;
+  background: #bdbdbd;
+}
+
+/* Search button inside the bar */
+.btn-search {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgb(0, 57, 126); 
+  color: rgb(255, 255, 255);
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  margin-left: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.btn-search:hover {
+  background-color: rgba(0, 57, 126, 0.696); 
+  color: rgb(255, 255, 255);
+}
+
+/* Optional: Hide label on input focus (if needed) */
+.search-input:focus+.search-placeholder,
+.search-input:not(:placeholder-shown)+.search-placeholder {
+  opacity: 0;
+}
+
+
+
+
+
+
+
+
+.submit-btn {
+  background-color: rgb(0, 70, 9);
+  color: rgb(255, 255, 255);
+  font-weight: 600;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 0.2rem;
+}
+
+.submit-btn:hover {
+  background-color: rgb(6, 184, 184);
+  color: rgb(0, 0, 0);
+}
+
+.action-form {
+  display: inline-block;
+  margin-right: 2rem;
+}
+
+/* Index page */
+.form-check-input:checked {
+  background-color: rgb(18, 206, 216) !important;
+}
+
+.form-check-input {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background-color: rgb(237, 254, 255) !important;
+  border-color: rgb(0, 137, 174) !important;
+}
+
+.tax-info {
+  display: none;
+}
+
+.tax-toggle {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid rgb(83, 83, 83);
+  border-radius: 25px;
+  padding: 8px 14px;
+  margin-bottom: 0.4rem;
+}
+
+
+/* Filters */
+.filters-wrapper {
+  position: relative;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.scroll-btn {
+  position: absolute;
+  top: 40%;
+  transform: translateY(-50%);
+  background: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.scroll-btn:hover {
+  background: #f1f1f1;
+}
+
+.left {
+  left: -19px;
+  display: none;
+}
+
+.right {
+  right: -19px;
+}
+
+#filters {
+  display: flex;
+  gap: 25px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 8px 6px;
+}
+
+#filters::-webkit-scrollbar {
+  display: none;
+}
+
+#filters {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.filter-card {
+  flex: 0 0 auto;
+  width: 200px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.filter-card:hover p {
+  font-weight: 500;
+  color: rgb(0, 0, 88);
+}
+
+.filter-card a {
+  text-decoration: none;
+  color: #222;
+  text-align: center;
+}
+
+.filter-img {
+  width: 100%;
+  height: 200px;
+  border-radius: 12px;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+  transition: transform 0.2s ease;
+}
+
+.filter-card:hover .filter-img {
+  transform: scale(1.06);
+}
+
+.filter-card p {
+  margin-top: 5px;
+  font-size: 1.2rem;
+  text-align: center;
+  color: rgb(0, 0, 88);
+}
+
+
+/* footer */
+.f-info-links a {
+  text-decoration: none;
+  color: black !important;
+  font-size: 1rem;
+}
+
+.f-info-links a:hover {
+  text-decoration: underline;
+  color: black !important;
+}
+
+.f-info-links,
+.f-info-socials,
+.brandf {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.f-info-socials i {
+  font-size: 1.4rem;
+  margin-right: 1rem;
+}
+
+.f-info {
+  text-align: center;
+  height: 8rem;
+  display: flex;
+  background-color: #ebebeb;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: space-evenly;
+  margin-top: 2rem;
+}
+
+.brandf {
+  font-size: 1.2rem;
+  font-weight: 900;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+}
+
+/* Cards in listing page*/
+.listing-card {
+  border: none !important;
+  margin-bottom: 2rem;
+}
+
+.card-img-top {
+  border-radius: 1rem !important;
+  width: 100% !important;
+  object-fit: cover !important;
+}
+
+.card-body {
+  padding: 0 !important;
+}
+
+.card-text p {
+  font-weight: 500;
+}
+
+.listing_link {
+  text-decoration: none;
+}
+
+/* Card Effect */
+.card-img-overlay {
+  opacity: 0;
+}
+
+.card-img-overlay:hover {
+  opacity: 0.2;
+  background-color: rgb(255, 255, 255);
+}
+
+
+
+
+/* Show page */
+.show-img {
+  height: 42vh;
+}
+
+.show-card {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.btn2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title-t {
+  background-color: rgb(6, 0, 77);
+  color: rgb(255, 255, 255);
+  font-size: 1.6rem;
+  text-align: center;
+  border: 0.3rem solid rgb(104, 241, 254);
+}
+
+.review-t {
+  color: rgb(40, 0, 140);
+  font-size: 1.6rem;
+}
+
+
+
+/* Edit btn*/
+.btne {
+  background-color: rgb(73, 73, 73);
+  color: rgb(255, 255, 255);
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.2rem;
+}
+
+.btne:hover {
+  background-color: rgb(29, 29, 29);
+  color: rgb(255, 255, 255);
+}
+
+/* Delete button */
+.btnd {
+  background-color: rgb(255, 0, 0);
+  color: rgb(255, 255, 255);
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.2rem;
+}
+
+.btnd:hover {
+  background-color: rgb(176, 0, 0);
+  color: rgb(255, 255, 255);
+}

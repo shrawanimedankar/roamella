@@ -1,0 +1,61 @@
+<nav class="navbar navbar-expand-md bg-body-light sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand d-flex align-items-center" href="/listings">
+      <img src="/images/logo.png" alt="Logo" style="height: 32px" class="me-1" />
+      <span class="brand-text">Roamella</span>
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+
+ <div class="navbar-nav ms-auto">
+  <form action="/listings/search" method="GET" class="main-search" role="search" >
+    <div class="search-segment active">
+      <span class="label">Where</span>
+      <input type="text" name="location" placeholder="Search destinations">
+    </div>
+    <!-- <div class="divider"></div>
+    <div class="search-segment">
+      <span class="label">When</span>
+      <input type="text" placeholder="Add dates">
+    </div>
+    <div class="divider"></div>
+    <div class="search-segment">
+      <span class="label">Who</span>
+      <input type="text" placeholder="Add guests">
+    </div> -->
+    <button class="btn-search" type="submit">
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </button>
+  </form>
+</div>
+
+      <div class="navbar-nav ms-auto align-items-md-center gap-md-3"></div>
+      <a href="/listings/new" class="btn host-btn"> Host Your Home</a>
+      <% if(!currUser){ %>
+        <a class="nav-link" href="/signup"><b>&nbsp;&nbsp;Sign up</b></a>
+        <a class="nav-link" href="/login"><b>&nbsp;&nbsp;&nbsp;Log in&nbsp;&nbsp;</b> </a>
+        <%}%>
+          <% if(currUser){ %>
+            <a class="nav-link" href="/logout"><b>&nbsp;&nbsp;&nbsp;Log out</b></a>
+            <%}%>
+    </div>
+  </div>
+  </div>
+</nav>
+
+
+
+
+ <script>
+  const segments = document.querySelectorAll(".search-segment");
+  segments.forEach(segment => {
+    segment.addEventListener("click", () => {
+      segments.forEach(s => s.classList.remove("active"));
+      segment.classList.add("active");
+    });
+  });
+</script>

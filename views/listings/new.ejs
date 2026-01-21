@@ -1,0 +1,76 @@
+<% layout("/layout/boilerplate") %>
+  <div class="row">
+    <div class="col-8 offset-2">
+      <br />
+      <h3 class="new-t">Create a New Listing</h3>
+      <br />
+      <form method="POST" action="/listings" novalidate class="needs-validation" enctype="multipart/form-data">
+        <div class="row">
+          <div class="mb-4 col-md-8">
+            <label for="title" class="form-label">Title</label>
+            <input name="listing[title]" placeholder="Add a catchy title" type="text" class="form-control" required />
+            <div class="valid-feedback">Looks good!</div>
+            <div class="invalid-feedback">This field is required.</div>
+          </div>
+
+          <div class="mb-4 col-md-4">
+            <label for="price" class="form-label">Price</label>
+            <input name="listing[price]" placeholder="1200 /night" class="form-control" required />
+            <div class="invalid-feedback">This field is required.</div>
+          </div>
+        </div>
+
+        <div class="mb-4">
+          <label for="description" class="form-label">Description</label>
+          <textarea name="listing[description]" placeholder="Enter Description" class="form-control"
+            required></textarea>
+          <div class="valid-feedback">Looks good!</div>
+          <div class="invalid-feedback">This field is required.</div>
+        </div>
+
+        <div class="mb-4">
+          <label for="image" class="form-label">Upload Image</label>
+          <input name="listing[image]" type="file" class="form-control" required />
+        </div>
+
+        <div class="row">
+          <div class="mb-4 col-md-6">
+            <label for="country" class="form-label">Country</label>
+            <input name="listing[country]" placeholder="India" type="text" class="form-control" required />
+            <div class="invalid-feedback">This field is required.</div>
+          </div>
+          <div class="mb-4 col-md-6">
+            <label for="location" class="form-label">Location</label>
+            <input name="listing[location]" placeholder="Jaipur, Rajasthan" type="text" class="form-control" required />
+            <div class="invalid-feedback">This field is required.</div>
+          </div>
+
+          <div>
+            <label class="form-label">Category</label>
+            <select name="listing[category]" class="form-control" required>
+              <option value="">Select Category</option>
+              <option value="Apartments">Apartment</option>
+              <option value="Hotels">Hotel</option>
+              <option value="Resorts">Resort</option>
+              <option value="Villas">Villa</option>
+              <option value="GlampingSites">Glamping Site</option>
+              <option value="Rooms">Room</option>
+              <option value="Cabins">Cabin</option>
+              <option value="GuestRooms">Guest Room</option>
+              <option value="Hostels">Hostel</option>
+              <option value="FarmStays">Farm Stay</option>
+              <option value="HouseBoats">House Boat</option>
+              <option value="Cottages">Cottage</option>
+              <option value="TreeHouses">Tree House</option>
+              <option value="Ryokans">Ryokan</option>
+              <option value="Artic">Artic</option>
+              <option value="Riads">Riad</option>
+            </select>
+            <div class="invalid-feedback">This field is required.</div>
+          </div>
+
+        </div>
+        <button class="submit-btn mt-4"><i class="fa-solid fa-plus"></i>Add</button>
+      </form>
+    </div>
+  </div>
