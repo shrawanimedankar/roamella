@@ -175,8 +175,8 @@ body {
 }
 
 .submit-btn:hover {
-  background-color: rgb(6, 184, 184);
-  color: rgb(0, 0, 0);
+  background-color: rgb(2, 138, 20);
+  color: rgb(255, 255, 255);
 }
 
 .action-form {
@@ -250,7 +250,7 @@ body {
 
 #filters {
   display: flex;
-  gap: 25px;
+  gap: 1px;
   overflow-x: auto;
   scroll-behavior: smooth;
   padding: 8px 6px;
@@ -284,8 +284,8 @@ body {
 }
 
 .filter-img {
-  width: 100%;
-  height: 200px;
+  width: 90%;
+  height: 150px;
   border-radius: 12px;
   object-fit: cover;
   display: block;
@@ -299,7 +299,7 @@ body {
 
 .filter-card p {
   margin-top: 5px;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   text-align: center;
   color: rgb(0, 0, 88);
 }
@@ -384,10 +384,11 @@ body {
 
 
 
-
 /* Show page */
 .show-img {
-  height: 42vh;
+  height: 35vh;
+  max-height: 320px;
+  object-fit: cover;
 }
 
 .show-card {
@@ -395,18 +396,13 @@ body {
   padding-right: 0;
 }
 
-.btn2 {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .title-t {
   background-color: rgb(6, 0, 77);
   color: rgb(255, 255, 255);
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   text-align: center;
-  border: 0.3rem solid rgb(104, 241, 254);
+  border: 0.2rem solid rgb(104, 241, 254);
+  padding: 5px;
 }
 
 .review-t {
@@ -445,3 +441,4 @@ body {
   background-color: rgb(176, 0, 0);
   color: rgb(255, 255, 255);
 }
+
