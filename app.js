@@ -25,6 +25,8 @@ const listingRouter = require("./routes/listing"); // Routes
 const reviewRouter = require("./routes/review");
 const userRouter = require("./routes/user");
 
+const PORT = process.env.PORT || 8080;
+
 const dbUrl = process.env.ATLASDB_URL;  //Connect to MongoDB
 main() 
   .then(() => console.log("Connection successful"))
@@ -100,6 +102,7 @@ app.use((err, req, res, next) => {
   res.status(statusCode).render("listings/error.ejs", { message });
 });
 
-app.listen(8080, () => { // Server
-  console.log("Server running on port 8080");
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
