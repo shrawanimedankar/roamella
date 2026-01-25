@@ -7,8 +7,8 @@ module.exports.index = async (req, res) => {
 
 module.exports.filterByCategory = async (req, res) => {
   const { category } = req.params;
-  const allListings = await Listing.find({ category }); //if listing  exist
-  const noListings = allListings.length === 0;  //if listing not exist
+  const allListings = await Listing.find({ category }); 
+  const noListings = allListings.length === 0;  
   res.render("listings/index.ejs", { allListings, noListings, category });
 };
 
@@ -78,7 +78,7 @@ module.exports.updateListing = async (req, res) => {
   let { id } = req.params;
   let listing = await Listing.findByIdAndUpdate(id, { ...req.body.listing });
 
-  if (typeof req.file !== "undefined") {
+  if (typeof req.file !== "undefined") {  //If new image uploaded → replace old image
     let url = req.file.path;
     let filename = req.file.filename;
     listing.image = { url, filename };

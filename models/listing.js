@@ -15,22 +15,20 @@ const listingSchema = new Schema({
   price: Number,
   location: String,
   country: String,
-
   category: {
     type: String,
     required: true,
-    enum: ["Apartments", "Hotels", "Resorts", "Villas", "GlampingSites", "Rooms", "Cabins", "GuestRooms", "Hostels", "FarmStays", "HouseBoats", "Cottages", "TreeHouses", "Ryokans", "Artic","Riads",],
+    enum: ["Apartments", "Hotels", "Resorts", "Villas", "GlampingSites", "Rooms", "Cabins", "GuestRooms", "Hostels", "FarmStays", "HouseBoats", "Cottages", "TreeHouses", "Ryokans", "Artic", "Riads",],
   },
-
   reviews: [
     {
       type: Schema.Types.ObjectId,
-      ref: "Review", // model this id belongs to
+      ref: "Review", //model this id belongs to
     },
   ],
   owner: {
     type: Schema.Types.ObjectId,
-    ref: "User", // model this id belongs to
+    ref: "User", //model this id belongs to
   },
 
 });

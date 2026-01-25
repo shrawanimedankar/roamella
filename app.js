@@ -21,7 +21,8 @@ const flash = require("connect-flash");  //Flash
 const cookieParser = require("cookie-parser"); //cookies
 app.use(cookieParser("secretCode"));
 
-const listingRouter = require("./routes/listing"); // Routes
+// Routes
+const listingRouter = require("./routes/listing"); 
 const reviewRouter = require("./routes/review");
 const userRouter = require("./routes/user");
 
@@ -41,12 +42,12 @@ app.engine("ejs", ejsMate);
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
-app.use(express.static(path.join(__dirname, "public"))); // Middleware
+app.use(express.static(path.join(__dirname, "public"))); 
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 
-
-const store = MongoStore.create({   //Mongo Session store
+//Mongo Session store
+const store = MongoStore.create({   
   mongoUrl: dbUrl,  
   crypto: {   
     secret: process.env.SECRET,    
@@ -65,7 +66,6 @@ const sessionOptions = {
   saveUninitialized: true,
   cookie: {
     expires: Date.now() + 7 * 24 * 60 * 60 * 1000,
-    // expires: new Date(Date.now() + 7*24*60*60*1000)
     maxAge: 7 * 24 * 60 * 60 * 1000,
     httpOnly: true,
   },
@@ -81,18 +81,20 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-app.use((req, res, next) => {   //locals
+//locals
+app.use((req, res, next) => {   
   res.locals.success = req.flash("success"); //Flash Middleware
   res.locals.error = req.flash("error");
-  res.locals.currUser = req.user;
+  res.locals.currUser = req.user || null;
   next();
 });
 
+//Routes
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
 
-app.use((req, res, next) => { //404- Other paths which are not mentioned
+app.use((req, res, next) => {
   next(new ExpressError(404, "Page not found!"));
 });
 
@@ -101,7 +103,6 @@ app.use((err, req, res, next) => {
   let { statusCode = 500, message = "Some Error Occurred" } = err;
   res.status(statusCode).render("listings/error.ejs", { message });
 });
-
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

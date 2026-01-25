@@ -7,39 +7,36 @@ const multer = require("multer");
 const { storage } = require("../cloudConfig.js");
 const upload = multer({ storage });
 
-
-router.get(  /* CATEGORY FILTER*/
+router.get(  
   "/category/:category",
   wrapAsync(listingController.filterByCategory)
 );
 
 router
-  .route("/")
-  .get(wrapAsync(listingController.index)) //Index - Main page
-  .post(
-    isLoggedIn, //Create New Listing
+  .route("/") 
+  .get(wrapAsync(listingController.index)) 
+  .post(   
+    isLoggedIn, 
     upload.single("listing[image]"),
     validateListing,
     wrapAsync(listingController.createListing)
   );
 
-router.get("/new", isLoggedIn, listingController.renderNewForm); // Show New Listing Form
+router.get("/new", isLoggedIn, listingController.renderNewForm);
 
 router.get("/search", listingController.searchListings);
 
-
-
 router
   .route("/:id")
-  .get(wrapAsync(listingController.showListing)) //Show Listing - After clicking cards
-  .put(   // Update Listing
+  .get(wrapAsync(listingController.showListing)) 
+  .put(   
     isLoggedIn,
     isOwner,
     upload.single("listing[image]"),
     validateListing,
     wrapAsync(listingController.updateListing)
   )
-  .delete(isLoggedIn,  //Delete Listing
+  .delete(isLoggedIn,  
     isOwner, 
     wrapAsync(listingController.destroyListing)); 
 

@@ -8,24 +8,98 @@ body {
   flex: 1;
 }
 
-.new-t {
-  color: rgb(10, 0, 151);
+/* Navbar */
+.navbar {
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid rgb(0, 129, 194);
+  background-color: rgb(218, 234, 255);
+  margin-bottom: 1rem;
+  box-shadow: 0 1px 5px rgb(0, 129, 194);
 }
 
-/* Navbar */
 .brand-text {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   font-weight: 900;
   font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   color: rgb(255, 21, 142);
-  margin-top: 0.4rem;
+  margin-top: 4px;
+  margin-left: 4px;
 }
 
-.navbar {
-  padding: 0.8rem 1rem;
-  border-bottom: 2px solid rgb(0, 129, 194);
-  background-color: rgb(218, 234, 255);
-  margin-bottom: 1rem;
+.main-search {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 400px;  
+  margin: 0 auto;    
+  position: relative;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.24);
+}
+
+.main-search:hover {
+  border: 1px solid black;
+  box-shadow: 0 5px 9px rgba(0, 0, 0, 0.2);
+}
+
+.search-segment {
+  display: flex;
+  flex-direction: column;
+  padding: 7px 10px 7px 20px;
+  border-radius: 20px;
+  transition: background 0.2s ease;
+  flex: 1; 
+}
+
+.search-segment:nth-child(1) {
+  flex: 0 0 50%;    
+  max-width: 50%;   
+  min-width: 150px; 
+}
+
+.search-segment .label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #000;
+  line-height: 1;
+}
+
+.search-segment input {
+  border: none;
+  outline: none;
+  font-size: 0.9rem;
+  background: transparent;
+  color: #595959;
+  width: 100%;
+}
+
+.search-segment input::placeholder {
+  color: #646464;
+}
+
+.btn-search {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgb(0, 57, 126);
+  color: rgb(255, 255, 255);
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.btn-search:hover {
+  background-color: rgba(0, 57, 126, 0.696);
+  color: rgb(255, 255, 255);
 }
 
 .navbar .host-btn {
@@ -46,15 +120,6 @@ body {
   color: rgb(0, 71, 185);
 }
 
-@media (max-width: 768px) {
-
-  .navbar-nav .nav-link,
-  .host-btn {
-    width: 100%;
-    margin: 8px 0;
-  }
-}
-
 .navbar .nav-link {
   font-size: 1.2rem;
   color: black;
@@ -62,142 +127,52 @@ body {
   text-align: center;
 }
 
+@media (max-width: 767px) {
+  .main-search {
+    width: 100%;
+    max-width: 100%;
+    margin: 0; 
+  }
 
-/* Search Bar */
-.main-search {
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 20px; 
-  display: flex;
-  align-items: center;
-  width: 100%;
-  max-width: 900px;
-  position: relative; 
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.24);
+  .search-segment {
+    flex: 0 0 100% !important;
+    min-width: 100% !important;
+  }
+
+  .auth-row {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    width: 100%;
+  }
+
+  .auth-row .host-btn,
+  .auth-row .nav-link {
+    flex: 0 0 auto;
+    margin-right: 10px;
+    text-align: center;
+  }
 }
 
-/* Each segment */
-.search-segment {
-  display: flex;
-  flex-direction: column;
-  padding: 7px 10px 7px 20px;
-  border-radius: 20px;
-  transition: background 0.2s ease;
-  flex: 1;
-  min-width: 130px;
-}
-
-.search-segment:nth-child(1) {
-  min-width: 300px; /* Where */
-}
-
-.search-segment:nth-child(2),
-.search-segment:nth-child(3) {
-  min-width: 130px; /* When and Who */
-}
-
-.search-segment:hover {
-  background: #bcbcbc47;
-}
-
-.search-segment .label { /* Labels */
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: #000;
-  line-height: 1;
-}
-
-.search-segment input { /* Input fields */
-  border: none;
-  outline: none;
-  font-size: 0.9rem;
-  background: transparent;
-  color: #5a5a5a;
-  width: 100%;
-}
-
-.search-segment input::placeholder {
-  color: #6d6d6d;
-}
-
-/* Divider */
-.divider {
-  width: 1px;
-  height: 40px;
-  background: #bdbdbd;
-}
-
-/* Search button inside the bar */
-.btn-search {
-  position: absolute;
-  right: 8px;
-  top: 50%;
-  transform: translateY(-50%);
-  background-color: rgb(0, 57, 126); 
-  color: rgb(255, 255, 255);
-  font-size: 1.1rem;
-  border: none;
-  border-radius: 50%;
-  width: 45px;
-  height: 45px;
-  margin-left: 2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* Toggle Tax*/
+.form-switch .form-check-input {
   cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    border-color 0.3s ease;
+  background-color: rgb(237, 254, 255);
+  border-color: rgb(0, 137, 174);
+  box-shadow: none;
 }
 
-.btn-search:hover {
-  background-color: rgba(0, 57, 126, 0.696); 
-  color: rgb(255, 255, 255);
-}
-
-/* Optional: Hide label on input focus (if needed) */
-.search-input:focus+.search-placeholder,
-.search-input:not(:placeholder-shown)+.search-placeholder {
-  opacity: 0;
-}
-
-
-
-
-
-
-
-
-.submit-btn {
-  background-color: rgb(0, 70, 9);
-  color: rgb(255, 255, 255);
-  font-weight: 600;
-  font-size: 1.1rem;
-  border: none;
-  border-radius: 0.2rem;
-}
-
-.submit-btn:hover {
-  background-color: rgb(2, 138, 20);
-  color: rgb(255, 255, 255);
-}
-
-.action-form {
-  display: inline-block;
-  margin-right: 2rem;
-}
-
-/* Index page */
-.form-check-input:checked {
-  background-color: rgb(18, 206, 216) !important;
-}
-
-.form-check-input {
-  cursor: pointer;
-  transition: all 0.3s ease;
-  background-color: rgb(237, 254, 255) !important;
-  border-color: rgb(0, 137, 174) !important;
+.form-switch .form-check-input:checked {
+  background-color: rgb(18, 206, 216);
+  border-color: rgb(18, 206, 216);
 }
 
 .tax-info {
   display: none;
+  font-size: 0.9rem;
+  color: #555;
 }
 
 .tax-toggle {
@@ -205,10 +180,13 @@ body {
   align-items: center;
   border: 1px solid rgb(83, 83, 83);
   border-radius: 25px;
-  padding: 8px 14px;
+  padding: 5px 15px;
   margin-bottom: 0.4rem;
 }
 
+.form-check-label{
+  font-size: 0.89rem;
+}
 
 /* Filters */
 .filters-wrapper {
@@ -253,7 +231,6 @@ body {
   gap: 1px;
   overflow-x: auto;
   scroll-behavior: smooth;
-  padding: 8px 6px;
 }
 
 #filters::-webkit-scrollbar {
@@ -272,15 +249,22 @@ body {
   cursor: pointer;
 }
 
-.filter-card:hover p {
-  font-weight: 500;
-  color: rgb(0, 0, 88);
-}
-
 .filter-card a {
   text-decoration: none;
   color: #222;
   text-align: center;
+}
+
+.filter-card p {
+  margin-top: 5px;
+  font-size: 1.1rem;
+  text-align: center;
+  color: rgb(0, 0, 128);
+}
+
+.filter-card:hover p {
+  font-weight: 500;
+  color: rgb(0, 0, 88);
 }
 
 .filter-img {
@@ -297,96 +281,82 @@ body {
   transform: scale(1.06);
 }
 
-.filter-card p {
-  margin-top: 5px;
-  font-size: 1.1rem;
-  text-align: center;
-  color: rgb(0, 0, 88);
-}
-
-
-/* footer */
-.f-info-links a {
-  text-decoration: none;
-  color: black !important;
-  font-size: 1rem;
-}
-
-.f-info-links a:hover {
-  text-decoration: underline;
-  color: black !important;
-}
-
-.f-info-links,
-.f-info-socials,
-.brandf {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.f-info-socials i {
-  font-size: 1.4rem;
-  margin-right: 1rem;
-}
-
-.f-info {
-  text-align: center;
-  height: 8rem;
-  display: flex;
-  background-color: #ebebeb;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: space-evenly;
-  margin-top: 2rem;
-}
-
-.brandf {
-  font-size: 1.2rem;
-  font-weight: 900;
-  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
-}
-
-/* Cards in listing page*/
-.listing-card {
-  border: none !important;
+/* Index Page*/
+.card.listing-card {
+  border: none;
   margin-bottom: 2rem;
 }
 
-.card-img-top {
-  border-radius: 1rem !important;
-  width: 100% !important;
-  object-fit: cover !important;
+.listing_link .card .card-img-top {
+  border-radius: 1rem;
+  width: 100%;
+  object-fit: cover;
 }
 
 .card-body {
-  padding: 0 !important;
+  padding: 0;
 }
 
-.card-text p {
+.listing-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #171717;
+  margin-bottom: 2px;
+}
+
+.listing-price {
+  font-size: 1rem;
   font-weight: 500;
+  color: #232323;
 }
 
 .listing_link {
   text-decoration: none;
 }
 
-/* Card Effect */
-.card-img-overlay {
+.card-img-overlay { /* Card Effect */
   opacity: 0;
 }
 
 .card-img-overlay:hover {
-  opacity: 0.2;
+  opacity: 0.12;
   background-color: rgb(255, 255, 255);
 }
 
+/* New listing */
+.new-t {
+  color: rgb(10, 0, 151);
+  font-weight: 700;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
 
+.form-label b{
+  color: #2e2e2eed;
+}
+
+/* Review */
+.submit-btn {
+  background-color: rgb(0, 70, 9);
+  color: rgb(255, 255, 255);
+  font-weight: 600;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 0.2rem;
+}
+
+.submit-btn:hover {
+  background-color: rgb(2, 138, 20);
+  color: rgb(255, 255, 255);
+}
+
+.action-form {
+  display: inline-block;
+  margin-right: 2rem;
+}
 
 /* Show page */
 .show-img {
-  height: 35vh;
+  height: 40vh;
   max-height: 320px;
   object-fit: cover;
 }
@@ -410,10 +380,7 @@ body {
   font-size: 1.6rem;
 }
 
-
-
-/* Edit btn*/
-.btne {
+.btne {    /* Edit btn*/
   background-color: rgb(73, 73, 73);
   color: rgb(255, 255, 255);
   font-size: 1rem;
@@ -427,8 +394,7 @@ body {
   color: rgb(255, 255, 255);
 }
 
-/* Delete button */
-.btnd {
+.btnd { /* Delete button */
   background-color: rgb(255, 0, 0);
   color: rgb(255, 255, 255);
   font-size: 1rem;
@@ -442,3 +408,61 @@ body {
   color: rgb(255, 255, 255);
 }
 
+/* Footer */
+.footer {
+  background-color: #ebebeb;
+  margin-top: 2rem;
+}
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1.2rem 0;
+  text-align: center;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.footer-socials i {
+  font-size: 1.4rem;
+  cursor: pointer;
+  color: #333;
+  transition: transform 0.2s ease;
+}
+
+.footer-socials i:hover {
+  transform: scale(1.2);
+}
+
+.footer-brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.copyright {
+  font-size: 0.9rem;
+  color: #3c3c3c;
+  margin-top: 0.1rem;
+}
+
+.footer-links {
+  display: flex;
+  gap: 1.2rem;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: #000;
+  font-size: 0.95rem;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}

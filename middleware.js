@@ -33,13 +33,13 @@ module.exports.isLoggedIn = (req, res, next) => {
   }
   next();
 };
+
 module.exports.saveRedirectUrl = (req, res, next) => {
   if (req.session.redirectUrl) {
     res.locals.redirectUrl = req.session.redirectUrl;
   }
   next();
 };
-
 
 module.exports.isOwner = async (req, res, next) => {
   if (!res.locals.currUser) {
@@ -58,9 +58,6 @@ module.exports.isOwner = async (req, res, next) => {
   }
   next();
 };
-
-
-
 
 module.exports.isReviewAuthor = async (req, res, next) => {
   if (!res.locals.currUser) {

@@ -3,7 +3,6 @@ const Schema = mongoose.Schema;
 // const passportLocalMongoose = require("passport-local-mongoose");
 const passportLocalMongoose = require("passport-local-mongoose").default;
 
-
 const userSchema = new Schema({
   email: {
     type: String,
@@ -14,5 +13,3 @@ const userSchema = new Schema({
 userSchema.plugin(passportLocalMongoose); //Automaically does password hashing, salting, username
 
 module.exports = mongoose.model("User", userSchema);
-
-
