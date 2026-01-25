@@ -1,7 +1,6 @@
 # 🏡 Roamella | Full-Stack Property Rental Platform
 
 ## 🔹 Features
-
 * CRUD functionality for property listings
 * RESTful APIs for listings, users, and reviews following MVC architecture
 * Secure authentication and role-based authorization using Passport.js
