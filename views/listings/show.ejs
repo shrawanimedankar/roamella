@@ -9,7 +9,6 @@
       <div class="col-12 col-md-8 col-lg-6">
         <div class="card show-card listing-card">
           <img src="<%= listing.image.url %>" class="card-img-top img-fluid show-img" alt="listing image" />
-
           <div class="card-body">
             <p class="card-text">Hosted by <b>@<%= listing.owner.username %></b>
             </p>
@@ -44,7 +43,7 @@
         <div class="col-12 col-md-8 col-lg-6">
           <h4 class="review-t">Leave a Review</h4>
           <form method="POST" action="/listings/<%= listing._id %>/reviews" class="needs-validation" novalidate>
-            <div class="mb-3 mt-3">
+            <div class="mb-1 mt-2">
               <label for="rating" class="form-label">Rate</label>
               <fieldset class="starability-grow">
                 <input type="radio" id="no-rate" class="input-no-rate" name="review[rating]" value="1" checked
@@ -78,7 +77,6 @@
         <div class="row justify-content-center mt-3">
           <div class="col-12 col-md-10">
             <h5 class="mb-4 text-center">All Reviews</h5>
-
             <div class="row">
               <% for (review of listing.reviews) { %>
                 <div class="col-12 col-md-6 mb-3">

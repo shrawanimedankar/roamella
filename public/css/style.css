@@ -89,8 +89,8 @@ body {
   font-size: 1.1rem;
   border: none;
   border-radius: 50%;
-  width: 45px;
-  height: 45px;
+  width: 42px;
+  height: 42px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -106,15 +106,16 @@ body {
   background-color: rgb(255, 255, 255);
   color: rgb(0, 71, 185);
   font-weight: 600;
-  border-radius: 0.5rem;
+  border-radius: 0.7rem;
   text-decoration: none;
   border: 3px solid rgb(0, 71, 185);
   text-align: center;
-  padding: 9px;
+  padding: 6px;
+  margin-right: 15px;
 }
 
 .navbar .host-btn:hover {
-  box-shadow: 6px 6px 1px rgba(0, 71, 185, 0.845);
+  box-shadow: 4px 4px 1px rgba(0, 71, 185, 0.845);
   border: 3px solid rgb(0, 71, 185);
   background-color: rgb(255, 255, 255);
   color: rgb(0, 71, 185);
@@ -125,33 +126,45 @@ body {
   color: black;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   text-align: center;
+  margin-right: 5px;
+  
 }
 
-@media (max-width: 767px) {
-  .main-search {
+@media (min-width: 300px) and (max-width: 965px) {
+  .main-search {   /* Search bar full width */
     width: 100%;
     max-width: 100%;
-    margin: 0; 
+    margin: 0;
   }
 
-  .search-segment {
+  .search-segment {  /* Search segment on its own row */
     flex: 0 0 100% !important;
     min-width: 100% !important;
   }
 
-  .auth-row {
+  .auth-row { /* Auth buttons in one line */
+    flex-direction: row;
     flex-wrap: nowrap;
-    justify-content: flex-start;
+    justify-content: center;
     width: 100%;
   }
 
-  .auth-row .host-btn,
-  .auth-row .nav-link {
-    flex: 0 0 auto;
-    margin-right: 10px;
+  .auth-row .host-btn{
+    white-space: nowrap;
+    font-size: 0.9rem;
     text-align: center;
+    margin-right: 3px;
+     padding: 4px;
+  }
+
+  .auth-row .nav-link {
+    white-space: nowrap;
+    font-size: 1.1rem;
+    text-align: center;
+    margin-right: 6px;
   }
 }
+
 
 /* Toggle Tax*/
 .form-switch .form-check-input {
@@ -166,7 +179,7 @@ body {
 
 .form-switch .form-check-input:checked {
   background-color: rgb(18, 206, 216);
-  border-color: rgb(18, 206, 216);
+  border-color: rgb(0, 137, 174);
 }
 
 .tax-info {
@@ -326,7 +339,8 @@ body {
 /* New listing */
 .new-t {
   color: rgb(10, 0, 151);
-  font-weight: 700;
+  font-weight: 800;
+  margin-bottom: 0.7rem;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
@@ -356,15 +370,27 @@ body {
 
 /* Show page */
 .show-img {
-  height: 40vh;
-  max-height: 320px;
+  height: 50vh;
+  max-height: 350px;
   object-fit: cover;
+  border-radius: 1rem;
 }
+
+
+@media (min-width: 300px) and (max-width: 600px) {
+  .show-img {
+    height: 30vh;
+    max-height: none;
+  }
+}
+
 
 .show-card {
   padding-left: 0;
   padding-right: 0;
 }
+
+
 
 .title-t {
   background-color: rgb(6, 0, 77);
@@ -380,7 +406,8 @@ body {
   font-size: 1.6rem;
 }
 
-.btne {    /* Edit btn*/
+/* Edit Page*/
+.btne {    
   background-color: rgb(73, 73, 73);
   color: rgb(255, 255, 255);
   font-size: 1rem;
@@ -392,6 +419,18 @@ body {
 .btne:hover {
   background-color: rgb(29, 29, 29);
   color: rgb(255, 255, 255);
+}
+
+.original-img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 1rem;
+}
+
+@media (min-width: 300px) and (max-width: 600px) {
+  .original-img {
+    max-width: 190px;  
+  }
 }
 
 .btnd { /* Delete button */
@@ -407,6 +446,8 @@ body {
   background-color: rgb(176, 0, 0);
   color: rgb(255, 255, 255);
 }
+
+
 
 /* Footer */
 .footer {
