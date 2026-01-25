@@ -1,9 +1,5 @@
 # 🏡 Roamella | Full-Stack Property Rental Platform
 
-Roamella is a scalable full-stack property rental platform that allows users to explore, create, edit, delete, and manage property listings. It features secure authentication, image uploads, reviews, category-based filtering, and a responsive UI.
-
----
-
 ## 🔹 Features
 
 * CRUD functionality for property listings
@@ -15,7 +11,6 @@ Roamella is a scalable full-stack property rental platform that allows users to 
 * Responsive UI built with **Bootstrap**, ensuring cross-device compatibility
 * Server-side validation, flash messages, and form validations
 
----
 
 ## 🛠 Tech Stack
 
@@ -38,24 +33,18 @@ Roamella is a scalable full-stack property rental platform that allows users to 
 * Express-session  
 * Connect-flash  
 
----
 
 ## 🔐 Authentication & Security
 * Passwords are hashed using secure algorithms  
 * Protected routes via middleware  
 * Only listing owners can modify or delete their listings  
 
----
 
-## 🌱 Future Improvements
+## 🌱 Future Improvements / Advanced Features
 * Booking functionality  
 * Wishlist / favorites feature  
 * Payment integration (Stripe)  
 * Admin dashboard  
-
----
-
-## ✨ Advanced Features (Optional)
 * Map integration (Mapbox)  
 * Host dashboard  
 * Chat between host & user   
