@@ -46,4 +46,7 @@
 * Admin dashboard  
 * Map integration (Mapbox)  
 * Host dashboard  
-* Chat between host & user   
+* Chat between host & user
+
+
+ ⭐ If you like this project – Give it a ⭐ on GitHub!
