@@ -40,8 +40,8 @@
 * Only listing owners can modify or delete their listings  
 
 ## 🔹 Deployment (Render.com)
-Go to Render → Sign Up → Continue with GitHub → Authorize Render
-Dashboard → New → Web Service → Choose your GitHub repo (roamella)
+- Go to Render → Sign Up → Continue with GitHub → Authorize Render
+- Dashboard → New → Web Service → Choose your GitHub repo (roamella)
 
 Render Settings:
 - Environment: Node
