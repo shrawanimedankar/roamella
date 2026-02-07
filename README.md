@@ -34,11 +34,20 @@
 * Express-session  
 * Connect-flash  
 
-
 ## 🔹 Authentication & Security
 * Passwords are hashed using secure algorithms  
 * Protected routes via middleware  
 * Only listing owners can modify or delete their listings  
+
+## 🔹 Deployment (Render.com)
+Go to Render → Sign Up → Continue with GitHub → Authorize Render
+Dashboard → New → Web Service → Choose your GitHub repo (roamella)
+
+Render Settings:
+- Environment: Node
+- Build Command: npm install (installs dependencies)
+- Start Command: node app.js (starts the server)
+
 
 ## 🔹 Installation
 * Clone the repo: git clone https://github.com/yourusername/roamella.git
@@ -50,8 +59,7 @@
 
 * Open your browser at http://localhost:3000
 
-## 🔹 Deployment
-Hosted on Render
+
 
 ## 🔹  Future Improvements / Advanced Features
 * Booking functionality  
