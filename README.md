@@ -11,7 +11,7 @@
 * Server-side validation, flash messages, and form validations
 
 
-## 🛠 Tech Stack
+## 🔹 Tech Stack
 
 **Frontend**  
 * EJS  
@@ -33,13 +33,13 @@
 * Connect-flash  
 
 
-## 🔐 Authentication & Security
+## 🔹 Authentication & Security
 * Passwords are hashed using secure algorithms  
 * Protected routes via middleware  
 * Only listing owners can modify or delete their listings  
 
 
-## 🌱 Future Improvements / Advanced Features
+## 🔹  Future Improvements / Advanced Features
 * Booking functionality  
 * Wishlist / favorites feature  
 * Payment integration (Stripe)  
