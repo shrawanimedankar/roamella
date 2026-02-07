@@ -1,5 +1,7 @@
 # 🏡 Roamella | Full-Stack Property Rental Platform
 
+🔹 Live Demo https://roamella.onrender.com/listings
+
 ## 🔹 Features
 * CRUD functionality for property listings
 * RESTful APIs for listings, users, and reviews following MVC architecture
@@ -38,6 +40,18 @@
 * Protected routes via middleware  
 * Only listing owners can modify or delete their listings  
 
+##🔹 Installation
+* Clone the repo: git clone https://github.com/yourusername/roamella.git
+* Navigate to the project folder: cd roamella
+* Install dependencies: npm install
+* Create a .env file and add your environment variables (ATLASDB URL, CLOUD API KEY, CLOUD API SECRET, CLOUD NAME, SESSION SECRET, etc.)
+
+* Run the app locally: npm start
+
+* Open your browser at http://localhost:3000
+
+##🔹 Deployment
+Hosted on Render
 
 ## 🔹  Future Improvements / Advanced Features
 * Booking functionality  
