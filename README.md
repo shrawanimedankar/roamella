@@ -40,7 +40,7 @@
 * Protected routes via middleware  
 * Only listing owners can modify or delete their listings  
 
-##🔹 Installation
+## 🔹 Installation
 * Clone the repo: git clone https://github.com/yourusername/roamella.git
 * Navigate to the project folder: cd roamella
 * Install dependencies: npm install
@@ -50,7 +50,7 @@
 
 * Open your browser at http://localhost:3000
 
-##🔹 Deployment
+## 🔹 Deployment
 Hosted on Render
 
 ## 🔹  Future Improvements / Advanced Features
@@ -63,4 +63,4 @@ Hosted on Render
 * Chat between host & user
 
 
- ⭐ If you like this project – Give it a ⭐ on GitHub!
+ #  ⭐ If you like this project – Give it a ⭐ on GitHub!
