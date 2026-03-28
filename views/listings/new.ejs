@@ -1,67 +1,99 @@
 <% layout("/layout/boilerplate") %>
-  <div class="row">
-    <div class="col-12 col-md-8 offset-md-2"> <br />
-      <h3 class="new-t">Create a New Listing</h3><br />
-      <form method="POST" action="/listings" novalidate class="needs-validation" enctype="multipart/form-data">
-        <div class="row">
-          <div class="mb-4 col-md-8">
-            <label for="title" class="form-label"> <b>Title</b></label>
-            <input name="listing[title]" placeholder="Add a catchy title" type="text" class="form-control" required />
-            <div class="valid-feedback">Looks good!</div>
-            <div class="invalid-feedback">This field is required.</div>
-          </div>
-          <div class="mb-4 col-md-4">
-            <label for="price" class="form-label"> <b>Price</b></label>
-            <input name="listing[price]" placeholder="1500 /night" class="form-control" required />
-            <div class="invalid-feedback">This field is required.</div>
-          </div>
-        </div>
-        <div class="mb-4">
-          <label for="description" class="form-label"><b>Description</b></label>
-          <textarea name="listing[description]" placeholder="Enter Description" class="form-control" required></textarea>
+<div class="row">
+  <div class="col-12 col-md-8 offset-md-2">
+    <br />
+    <h2 class="new-p text-center">Host your place on Roamella 🏡</h2>
+    <p class="new-p text-center"> Share your space with travelers around the world</p>
+    <br />
+    <form method="POST" action="/listings" novalidate class="needs-validation" enctype="multipart/form-data">
+      <div class="row">
+        <div class="mb-4 col-md-8">
+          <label for="title" class="form-label"><b>Title</b></label>
+          <input type="text" name="listing[title]" placeholder="Add a catchy title" class="form-control" required />
           <div class="valid-feedback">Looks good!</div>
           <div class="invalid-feedback">This field is required.</div>
         </div>
-        <div class="mb-4">
-          <label for="image" class="form-label"><b>Upload Image</b></label>
-          <input name="listing[image]" type="file" class="form-control" required />
+
+        <div class="mb-4 col-md-4">
+          <label for="price" class="form-label"><b>Price</b></label>
+          <input type="text" name="listing[price]" placeholder="1500 /night" class="form-control" required />
+          <div class="invalid-feedback">This field is required.</div>
         </div>
-        <div class="row">
-          <div class="mb-4 col-md-6">
-            <label for="country" class="form-label"><b>Country</b></label>
-            <input name="listing[country]" placeholder="India" type="text" class="form-control" required />
-            <div class="invalid-feedback">This field is required.</div>
-          </div>
-          <div class="mb-4 col-md-6">
-            <label for="location" class="form-label"><b>Location</b></label>
-            <input name="listing[location]" placeholder="Jaipur, Rajasthan" type="text" class="form-control" required />
-            <div class="invalid-feedback">This field is required.</div>
-          </div>
-          <div>
-            <label class="form-label"><b>Category</b></label>
-            <select name="listing[category]" class="form-control" required>
-              <option value="">Select Category</option>
-              <option value="Apartments">Apartment</option>
-              <option value="Hotels">Hotel</option>
-              <option value="Resorts">Resort</option>
-              <option value="Villas">Villa</option>
-              <option value="GlampingSites">Glamping Site</option>
-              <option value="Rooms">Room</option>
-              <option value="Cabins">Cabin</option>
-              <option value="GuestRooms">Guest Room</option>
-              <option value="Hostels">Hostel</option>
-              <option value="FarmStays">Farm Stay</option>
-              <option value="HouseBoats">House Boat</option>
-              <option value="Cottages">Cottage</option>
-              <option value="TreeHouses">Tree House</option>
-              <option value="Ryokans">Ryokan</option>
-              <option value="Artic">Artic</option>
-              <option value="Riads">Riad</option>
-            </select>
-            <div class="invalid-feedback">This field is required.</div>
-          </div>
+      </div>
+
+      <div class="mb-4">
+        <label for="description" class="form-label"><b>Description</b></label>
+        <textarea name="listing[description]" placeholder="Enter Description" class="form-control" required></textarea>
+        <div class="valid-feedback">Looks good!</div>
+        <div class="invalid-feedback">This field is required.</div>
+      </div>
+
+      <div class="mb-4">
+        <label for="image" class="form-label"><b>Upload Image</b></label>
+        <input type="file" name="listing[image]" class="form-control" required />
+      </div>
+
+      <div class="row">
+        <div class="mb-4 col-md-6">
+          <label for="country" class="form-label"><b>Country</b></label>
+          <input type="text" name="listing[country]" placeholder="India" class="form-control" required />
+          <div class="invalid-feedback">This field is required.</div>
         </div>
-        <button class="submit-btn mt-4"><i class="fa-solid fa-plus"></i>Add</button>
-      </form>
-    </div>
+
+        <div class="mb-4 col-md-6">
+          <label for="location" class="form-label"><b>Location</b></label>
+          <input type="text" name="listing[location]" placeholder="Jaipur, Rajasthan" class="form-control" required />
+          <div class="invalid-feedback">This field is required.</div>
+        </div>
+
+        <div class="mb-4 col-md-6">
+          <label class="form-label"><b>Category</b></label>
+          <select id="category" name="listing[category]" class="form-control" required>
+            <option value="">Select Category</option>
+            <option value="Apartments">Apartment</option>
+            <option value="Hotels">Hotel</option>
+            <option value="Resorts">Resort</option>
+            <option value="Villas">Villa</option>
+            <option value="GlampingSites">Glamping Site</option>
+            <option value="Rooms">Room</option>
+            <option value="Cabins">Cabin</option>
+            <option value="GuestRooms">Guest Room</option>
+            <option value="Hostels">Hostel</option>
+            <option value="FarmStays">Farm Stay</option>
+            <option value="HouseBoats">House Boat</option>
+            <option value="Cottages">Cottage</option>
+            <option value="TreeHouses">Tree House</option>
+            <option value="Ryokans">Ryokan</option>
+            <option value="Artic">Artic</option>
+            <option value="Riads">Riad</option>
+          </select>
+          <div class="invalid-feedback">This field is required.</div>
+        </div>
+      </div>
+
+      <!-- AMENITIES SECTION -->
+      <div class="mb-4">
+        <label class="form-label"><b>Amenities</b> (select at least 10)</label>
+        <div class="row g-2" id="amenities-box">
+          <% const amenitiesList = [
+            "WiFi","Kitchen","Free Parking","Air Conditioning","Heating",
+            "Power Backup","Hot Water","Washing Machine","Iron","Hair Dryer",
+            "TV","Dedicated Workspace","Balcony","Garden","Swimming Pool",
+            "Gym","Elevator","Security Camera","Fire Extinguisher","First Aid Kit"
+          ]; %>
+
+          <% amenitiesList.forEach((amenity, i) => { %>
+            <div class="col-md-4 col-sm-6">
+              <label class="amenity-card">
+                <input type="checkbox" name="listing[amenities][]" value="<%= amenity %>" id="amenity-<%= i %>" />
+                <span><%= amenity %></span>
+              </label>
+            </div>
+          <% }) %>
+        </div>
+      </div>
+
+      <button class="submit-btn mt-4"><i class="fa-solid fa-plus"></i> Add</button>
+    </form>
   </div>
+</div>

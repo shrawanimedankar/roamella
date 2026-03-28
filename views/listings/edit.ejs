@@ -64,6 +64,30 @@
           </select>
           <div class="invalid-feedback">This field is required.</div>
         </div>
+        <!-- AMENITIES SECTION -->
+        <div class="mb-4">
+          <label class="form-label"><b>Amenities</b></label>
+          <div class="row g-2 id="amenities-box"">
+            <% const amenitiesList = [
+              "WiFi","Kitchen","Free Parking","Air Conditioning","Heating",
+              "Power Backup","Hot Water","Washing Machine","Iron","Hair Dryer",
+              "TV","Dedicated Workspace","Balcony","Garden","Swimming Pool",
+              "Gym","Elevator","Security Camera","Fire Extinguisher","First Aid Kit"
+            ]; %>
+            <% amenitiesList.forEach((amenity) => { %>
+              <div class="col-md-4 col-sm-6">
+                <label class="amenity-card">
+                  <input
+                    type="checkbox"
+                    name="listing[amenities][]"
+                    value="<%= amenity %>"
+                    <%= listing.amenities && listing.amenities.includes(amenity) ? "checked" : "" %> />
+                  <span><%= amenity %></span>
+                </label>
+              </div>
+            <% }) %>
+          </div>
+        </div>
         <button class="btne">Edit <i class="fa-solid fa-pencil"></i></button>
       </form>
     </div>

@@ -1,35 +1,36 @@
-if (process.env.NODE_ENV != "production") { // ENV
+if (process.env.NODE_ENV != "production") {
   require("dotenv").config();
 }
 
-const express = require("express"); // Core imports
+const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const path = require("path");
 
-const methodOverride = require("method-override"); // Utilities
+const methodOverride = require("method-override");
 const ejsMate = require("ejs-mate");
 const ExpressError = require("./utils/ExpressError");
 
-const session = require("express-session");  // Authentication & session
-const MongoStore = require("connect-mongo").default;  //Mongo session Store 
+const session = require("express-session");
+const MongoStore = require("connect-mongo").default;
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const User = require("./models/user");
 
-const flash = require("connect-flash");  //Flash  
-const cookieParser = require("cookie-parser"); //cookies
+const flash = require("connect-flash");
+const cookieParser = require("cookie-parser");
 app.use(cookieParser("secretCode"));
 
 // Routes
-const listingRouter = require("./routes/listing"); 
+const listingRouter = require("./routes/listing");
 const reviewRouter = require("./routes/review");
 const userRouter = require("./routes/user");
+const messageRouter = require("./routes/messages");
 
 const PORT = process.env.PORT || 8080;
 
-const dbUrl = process.env.ATLASDB_URL;  //Connect to MongoDB
-main() 
+const dbUrl = process.env.ATLASDB_URL; //Connect to MongoDB
+main()
   .then(() => console.log("Connection successful"))
   .catch((err) => console.log(err));
 
@@ -38,30 +39,30 @@ async function main() {
 }
 
 // View engine
-app.engine("ejs", ejsMate); 
+app.engine("ejs", ejsMate);
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"));
 
-app.use(express.static(path.join(__dirname, "public"))); 
+app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 
 //Mongo Session store
-const store = MongoStore.create({   
-  mongoUrl: dbUrl,  
-  crypto: {   
-    secret: process.env.SECRET,    
+const store = MongoStore.create({
+  mongoUrl: dbUrl,
+  crypto: {
+    secret: process.env.SECRET,
   },
-touchAfter: 24 * 3600, 
-}); 
+  touchAfter: 24 * 3600,
+});
 
-store.on("error", (err) => {    
-     console.log("Error in Mongo session store", err);    
+store.on("error", (err) => {
+  console.log("Error in Mongo session store", err);
 });
 
 const sessionOptions = {
   store,
-  secret: process.env.SECRET, 
+  secret: process.env.SECRET,
   resave: false,
   saveUninitialized: true,
   cookie: {
@@ -82,7 +83,7 @@ passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
 //locals
-app.use((req, res, next) => {   
+app.use((req, res, next) => {
   res.locals.success = req.flash("success"); //Flash Middleware
   res.locals.error = req.flash("error");
   res.locals.currUser = req.user || null;
@@ -93,6 +94,7 @@ app.use((req, res, next) => {
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);
+app.use("/", messageRouter);
 
 app.use((req, res, next) => {
   next(new ExpressError(404, "Page not found!"));

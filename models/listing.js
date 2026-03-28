@@ -18,19 +18,43 @@ const listingSchema = new Schema({
   category: {
     type: String,
     required: true,
-    enum: ["Apartments", "Hotels", "Resorts", "Villas", "GlampingSites", "Rooms", "Cabins", "GuestRooms", "Hostels", "FarmStays", "HouseBoats", "Cottages", "TreeHouses", "Ryokans", "Artic", "Riads",],
+    enum: [
+      "Apartments",
+      "Hotels",
+      "Resorts",
+      "Villas",
+      "GlampingSites",
+      "Rooms",
+      "Cabins",
+      "GuestRooms",
+      "Hostels",
+      "FarmStays",
+      "HouseBoats",
+      "Cottages",
+      "TreeHouses",
+      "Ryokans",
+      "Artic",
+      "Riads",
+    ],
+  },
+  amenities: {
+    type: [String],
+    required: true,
+    validate: {
+      validator: (v) => v.length >= 10,
+      message: "Please select at least 10 amenities",
+    },
   },
   reviews: [
     {
       type: Schema.Types.ObjectId,
-      ref: "Review", //model this id belongs to
+      ref: "Review",
     },
   ],
   owner: {
     type: Schema.Types.ObjectId,
-    ref: "User", //model this id belongs to
+    ref: "User",
   },
-
 });
 
 listingSchema.post("findOneAndDelete", async (listing) => {

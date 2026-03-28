@@ -8,6 +8,15 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
+  isVerified: {
+    type: Boolean,
+    default: true,
+  },
+
+  createdAt: {
+    type: Date,
+    default: Date.now(),
+  },
 });
 
 userSchema.plugin(passportLocalMongoose); //Automaically does password hashing, salting, username

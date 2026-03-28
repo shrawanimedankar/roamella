@@ -1,25 +1,62 @@
+console.log("Current working directory:", process.cwd());
+require("dotenv").config();
+
 const mongoose = require("mongoose");
-const initData = require("./data.js");
 const Listing = require("../models/listing.js");
+const User = require("../models/user.js");
+const Review = require("../models/review.js");
+const initData = require("./data.js");
 
-const MONGO_URL = "mongodb://127.0.0.1:27017/roamella";
+const defaultOwnerId = "69705829520cd2a68bab2009";
 
-main() //Connect to MongoDB
-  .then(() => console.log("Connection successful"))
-  .catch((err) => console.log(err));
+async function init() {
+  try {
+    await mongoose.connect(process.env.ATLASDB_URL);
+    console.log("MongoDB connected");
 
-async function main() {
-  await mongoose.connect(MONGO_URL);
+    // Ensure default owner exists
+    let defaultOwner = await User.findById(defaultOwnerId);
+    if (!defaultOwner) {
+      defaultOwner = new User({
+        _id: defaultOwnerId,
+        username: "shrawi",
+        email: "shrawanimedankar@gmail.com",
+      });
+      await User.register(defaultOwner, "shrawi");
+      console.log("Default owner created ");
+    }
+
+    // Loop through each listing
+    for (let listingData of initData.data) {
+      // Create review documents first
+      let reviewIds = [];
+      if (listingData.reviews && listingData.reviews.length > 0) {
+        const reviewDocs = await Review.insertMany(
+          listingData.reviews.map((r) => ({
+            ...r,
+            author: r.author || defaultOwnerId,
+          })),
+        );
+        reviewIds = reviewDocs.map((r) => r._id);
+      }
+
+      // Create listing with review IDs
+      const listing = new Listing({
+        ...listingData,
+        owner: defaultOwnerId,
+        reviews: reviewIds,
+      });
+
+      await listing.save();
+      // console.log(`Inserted listing: ${listing.title}`);
+    }
+
+    console.log("All listings with reviews added successfully!");
+  } catch (err) {
+    console.error(err);
+  } finally {
+    mongoose.connection.close();
+  }
 }
 
-const initDB = async () => {
-  await Listing.deleteMany({});
-  initData.data = initData.data.map((obj) => ({
-    ...obj,
-    owner: "6967a512e4fcd62714f2b5ce",
-  }));
-  await Listing.insertMany(initData.data);
-  console.log("Data was initialized");
-};
-
-initDB();
+init();

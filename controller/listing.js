@@ -31,21 +31,20 @@ module.exports.renderNewForm = (req, res) => {
 };
 
 module.exports.showListing = async (req, res) => {
-  let { id } = req.params;
+  const { id } = req.params;
   const listing = await Listing.findById(id)
+    .populate("owner")          // <--- populates the owner document
     .populate({
-      path: "reviews",
-      populate: {
-        path: "author",
-      },
-    })
-    .populate("owner");
+      path: "reviews",         // optional: if you also want reviews populated
+      populate: { path: "author" }
+    });
+
   if (!listing) {
-    req.flash("error", "Listing doesn't exist!");
+    req.flash("error", "Listing not found");
     return res.redirect("/listings");
   }
-  // console.log(listing);
-  res.render("listings/show.ejs", { listing });
+
+  res.render("listings/show", { listing });
 };
 
 module.exports.createListing = async (req, res, next) => {

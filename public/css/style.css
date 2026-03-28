@@ -347,9 +347,58 @@ body {
     "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
+.new-p {
+  color: rgb(10, 0, 151);
+  font-weight: 800;
+  margin-bottom: 0%;
+  font-family:
+    "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+    "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
 
 .form-label b {
   color: #2e2e2eed;
+}
+
+.amenity-card input {
+  /* Hide default checkbox */
+  display: none;
+}
+
+.amenity-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 50px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: #fff;
+  color: #000;
+  font-weight: 500;
+  font-size: 0.8rem;
+}
+
+.amenity-card:hover {
+  border-color: #000;
+}
+
+.amenity-card input:checked + span {
+  background: #000;
+  color: #fff;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+
+.amenity-card span {
+  width: 100%;
+  text-align: center;
 }
 
 /* Review */
@@ -373,11 +422,26 @@ body {
 }
 
 /* Show page */
+.show-page {
+  max-width: 100% !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
 .show-img {
   height: 50vh;
   max-height: 350px;
   object-fit: cover;
   border-radius: 1rem;
+}
+
+.contact-host {
+  color: rgb(255, 255, 255);
+  background: rgb(22, 22, 255);
+}
+
+.contact-host:hover {
+  color: rgb(255, 255, 255);
+  background: rgb(0, 0, 113);
 }
 
 @media (min-width: 300px) and (max-width: 600px) {
@@ -401,9 +465,8 @@ body {
   padding: 5px;
 }
 
-.review-t {
-  color: rgb(40, 0, 140);
-  font-size: 1.6rem;
+.cardInfo {
+  font-size: 0.9rem;
 }
 
 /* Edit Page*/
@@ -444,6 +507,21 @@ body {
 }
 
 .btnd:hover {
+  background-color: rgb(176, 0, 0);
+  color: rgb(255, 255, 255);
+}
+
+.delRev {
+  /* Delete button */
+  background-color: rgb(255, 0, 0);
+  color: rgb(255, 255, 255);
+  font-size: 0.7rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.2rem;
+}
+
+.delRev:hover {
   background-color: rgb(176, 0, 0);
   color: rgb(255, 255, 255);
 }
