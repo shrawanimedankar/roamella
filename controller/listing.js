@@ -2,13 +2,17 @@ const Listing = require("../models/listing.js");
 
 module.exports.index = async (req, res) => {
   const allListings = await Listing.find({});
-  res.render("listings/index.ejs", { allListings, noListings: allListings.length === 0, category: "All Listings" });
+  res.render("listings/index.ejs", {
+    allListings,
+    noListings: allListings.length === 0,
+    category: "All Listings",
+  });
 };
 
 module.exports.filterByCategory = async (req, res) => {
   const { category } = req.params;
-  const allListings = await Listing.find({ category }); 
-  const noListings = allListings.length === 0;  
+  const allListings = await Listing.find({ category });
+  const noListings = allListings.length === 0;
   res.render("listings/index.ejs", { allListings, noListings, category });
 };
 
@@ -18,11 +22,14 @@ module.exports.searchListings = async (req, res) => {
     $or: [
       { location: { $regex: location, $options: "i" } },
       { country: { $regex: location, $options: "i" } },
-      { title: { $regex: location, $options: "i" } }
-    ]
+      { title: { $regex: location, $options: "i" } },
+    ],
   });
   const noListings = allListings.length === 0;
-  res.render("listings/index.ejs", { allListings, noListings, category: `Search results for ${location}`
+  res.render("listings/index.ejs", {
+    allListings,
+    noListings,
+    category: `Search results for ${location}`,
   });
 };
 
@@ -33,10 +40,10 @@ module.exports.renderNewForm = (req, res) => {
 module.exports.showListing = async (req, res) => {
   const { id } = req.params;
   const listing = await Listing.findById(id)
-    .populate("owner")          // <--- populates the owner document
+    .populate("owner") // <--- populates the owner document
     .populate({
-      path: "reviews",         // optional: if you also want reviews populated
-      populate: { path: "author" }
+      path: "reviews", // optional: if you also want reviews populated
+      populate: { path: "author" },
     });
 
   if (!listing) {
@@ -68,7 +75,7 @@ module.exports.renderEditForm = async (req, res) => {
     res.redirect("/listings");
   } else {
     let originalImageUrl = listing.image.url;
-    originalImageUrl = originalImageUrl.replace("/upload", "/upload/w_250")
+    originalImageUrl = originalImageUrl.replace("/upload", "/upload/w_250");
     res.render("listings/edit.ejs", { listing, originalImageUrl });
   }
 };
@@ -77,7 +84,8 @@ module.exports.updateListing = async (req, res) => {
   let { id } = req.params;
   let listing = await Listing.findByIdAndUpdate(id, { ...req.body.listing });
 
-  if (typeof req.file !== "undefined") {  //If new image uploaded → replace old image
+  if (typeof req.file !== "undefined") {
+    //If new image uploaded → replace old image
     let url = req.file.path;
     let filename = req.file.filename;
     listing.image = { url, filename };
