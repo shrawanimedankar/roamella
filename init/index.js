@@ -1,5 +1,12 @@
-console.log("Current working directory:", process.cwd());
 require("dotenv").config();
+
+if (
+  !process.env.ATLASDB_URL ||
+  !process.env.OWNER_ID ||
+  !process.env.OWNER_PASSWORD
+) {
+  throw new Error("Missing environment variables");
+}
 
 const mongoose = require("mongoose");
 const Listing = require("../models/listing.js");
@@ -7,26 +14,32 @@ const User = require("../models/user.js");
 const Review = require("../models/review.js");
 const initData = require("./data.js");
 
-const defaultOwnerId = "69705829520cd2a68bab2009";
+const defaultOwnerId = process.env.OWNER_ID;
 
 async function init() {
   try {
     await mongoose.connect(process.env.ATLASDB_URL);
     console.log("MongoDB connected");
 
-    // Ensure default owner exists
-    let defaultOwner = await User.findById(defaultOwnerId);
-    if (!defaultOwner) {
-      defaultOwner = new User({
-        _id: defaultOwnerId,
-        username: "shrawi",
-        email: "shrawanimedankar@gmail.com",
-      });
-      await User.register(defaultOwner, "shrawi");
-      console.log("Default owner created ");
-    }
+    // Delete old user (if exists)
+    await User.findByIdAndDelete(defaultOwnerId);
+    console.log("Old default owner deleted");
 
-    // Loop through each listing
+    // Create new default user
+    const defaultOwner = new User({
+      _id: defaultOwnerId,
+      username: "shrawi",
+      email: "shrawanimedankar@gmail.com",
+    });
+    await User.register(defaultOwner, process.env.OWNER_PASSWORD);
+    console.log("New default owner created");
+
+    // (Optional) clear old data
+    await Listing.deleteMany({});
+    await Review.deleteMany({});
+    console.log("Old listings & reviews deleted");
+
+    // Insert fresh data
     for (let listingData of initData.data) {
       // Create review documents first
       let reviewIds = [];

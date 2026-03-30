@@ -584,3 +584,10 @@ body {
 .footer-links a:hover {
   text-decoration: underline;
 }
+
+/* Error.ejs */
+.custom-alert {
+  background-color: rgb(202, 0, 0);   /* your red */
+  color: white;
+  border: 1px solid black;
+}
