@@ -28,7 +28,7 @@ module.exports.validateReview = (req, res, next) => {
 module.exports.isLoggedIn = (req, res, next) => {
   if (!req.isAuthenticated()) {
     req.session.redirectUrl = req.originalUrl;
-    req.flash("error", "you must be logged in to create a listing!");
+    req.flash("error", "Please log in to create a listing!");
     return res.redirect("/login");
   }
   next();
@@ -53,7 +53,7 @@ module.exports.isOwner = async (req, res, next) => {
     return res.redirect("/listings");
   }
   if (!listing.owner.equals(res.locals.currUser._id)) {
-    req.flash("error", "No permission, you are not the owner");
+    req.flash("error", "Access denied. Only the owner can perform this action.");
     return res.redirect(`/listings/${id}`);
   }
   next();
@@ -61,7 +61,7 @@ module.exports.isOwner = async (req, res, next) => {
 
 module.exports.isReviewAuthor = async (req, res, next) => {
   if (!res.locals.currUser) {
-    req.flash("error", "You must be logged in");
+    req.flash("error", "Please log in to continue.");
     return res.redirect("/login");
   }
   let { id, reviewId } = req.params;
@@ -71,7 +71,7 @@ module.exports.isReviewAuthor = async (req, res, next) => {
     return res.redirect(`/listings/${id}`);
   }
   if (!review.author.equals(res.locals.currUser._id)) {
-    req.flash("error", "No permission, you are not the author");
+    req.flash("error", "Access denied. Only the author can perform this action.");
     return res.redirect(`/listings/${id}`);
   }
   next();

@@ -10,11 +10,11 @@ body {
 
 /* Navbar */
 .navbar {
-  padding: 0.8rem 1rem;
+  padding: 0.5rem 1rem;
   border-bottom: 1px solid rgb(0, 129, 194);
-  background-color: rgb(218, 234, 255);
+  background-color: rgb(188, 217, 255);
   margin-bottom: 1rem;
-  box-shadow: 0 1px 5px rgb(0, 129, 194);
+  box-shadow: 0 1px 5px rgb(0, 32, 48);
 }
 
 .brand-text {
@@ -36,6 +36,7 @@ body {
   max-width: 400px;
   margin: 0 auto;
   position: relative;
+  padding: 1px 0;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.24);
 }
 
@@ -47,16 +48,10 @@ body {
 .search-segment {
   display: flex;
   flex-direction: column;
-  padding: 7px 10px 7px 20px;
+  padding: 4px 10px 4px 20px;
   border-radius: 20px;
   transition: background 0.2s ease;
   flex: 1;
-}
-
-.search-segment:nth-child(1) {
-  flex: 0 0 50%;
-  max-width: 50%;
-  min-width: 150px;
 }
 
 .search-segment .label {
@@ -69,14 +64,14 @@ body {
 .search-segment input {
   border: none;
   outline: none;
-  font-size: 0.9rem;
+  font-size: 1rem;
   background: transparent;
   color: #595959;
   width: 100%;
 }
 
 .search-segment input::placeholder {
-  color: #646464;
+  color: #484848;
 }
 
 .btn-search {
@@ -84,13 +79,13 @@ body {
   right: 8px;
   top: 50%;
   transform: translateY(-50%);
-  background-color: rgb(0, 57, 126);
+  background-color: rgb(0, 53, 117);
   color: rgb(255, 255, 255);
-  font-size: 1.1rem;
+  font-size: 0.8rem;
   border: none;
   border-radius: 50%;
-  width: 42px;
-  height: 42px;
+  width: 33x;
+  height: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -98,7 +93,7 @@ body {
 }
 
 .btn-search:hover {
-  background-color: rgba(0, 57, 126, 0.696);
+  background-color: rgba(0, 53, 117, 0.863);
   color: rgb(255, 255, 255);
 }
 
@@ -181,12 +176,6 @@ body {
 .form-switch .form-check-input:checked {
   background-color: rgb(18, 206, 216);
   border-color: rgb(0, 137, 174);
-}
-
-.tax-info {
-  display: none;
-  font-size: 0.9rem;
-  color: #555;
 }
 
 .tax-toggle {
@@ -324,6 +313,12 @@ body {
   color: #232323;
 }
 
+.small-text {
+  font-size: 0.89rem;
+  font-weight: 500;
+  color: rgb(86, 86, 86);
+}
+
 .listing_link {
   text-decoration: none;
 }
@@ -337,6 +332,17 @@ body {
   opacity: 0.12;
   background-color: rgb(255, 255, 255);
 }
+
+.price-with-gst {
+  display: none;   /* 🔥 this fixes everything */
+  font-size: 0.9rem;
+  color: black;
+  background: #dadada;
+  padding: 2px 6px;
+  border-radius: 5px;
+  margin-top: 4px;
+}
+
 
 /* New listing */
 .new-t {
@@ -488,11 +494,12 @@ body {
   max-width: 100%;
   height: auto;
   border-radius: 1rem;
+  box-shadow: 0 4px 15px rgb(70, 70, 70);
 }
 
 @media (min-width: 300px) and (max-width: 600px) {
   .original-img {
-    max-width: 190px;
+    max-width: 180px;
   }
 }
 
@@ -528,7 +535,7 @@ body {
 
 /* Footer */
 .footer {
-  background-color: #ebebeb;
+  background-color: rgb(0, 11, 26);;
   margin-top: 2rem;
 }
 
@@ -549,8 +556,9 @@ body {
 .footer-socials i {
   font-size: 1.4rem;
   cursor: pointer;
-  color: #333;
   transition: transform 0.2s ease;
+  color: #ffffff;
+
 }
 
 .footer-socials i:hover {
@@ -566,7 +574,7 @@ body {
 
 .copyright {
   font-size: 0.9rem;
-  color: #3c3c3c;
+  color: #ffffff;
   margin-top: 0.1rem;
 }
 
@@ -577,7 +585,7 @@ body {
 
 .footer-links a {
   text-decoration: none;
-  color: #000;
+  color: #d8d8d8;
   font-size: 0.95rem;
 }
 
@@ -587,7 +595,6 @@ body {
 
 /* Error.ejs */
 .custom-alert {
-  background-color: rgb(202, 0, 0);   /* your red */
-  color: white;
-  border: 1px solid black;
+  background-color: rgba(255, 0, 0, 0.92);
+  color: rgb(255, 255, 255);
 }

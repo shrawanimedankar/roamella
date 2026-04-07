@@ -72,7 +72,7 @@ const sessionOptions = {
   },
 };
 
-app.use(session(sessionOptions)); //session middleware
+app.use(session(sessionOptions));
 app.use(flash());
 
 app.use(passport.initialize());
@@ -84,13 +84,16 @@ passport.deserializeUser(User.deserializeUser());
 
 //locals
 app.use((req, res, next) => {
-  res.locals.success = req.flash("success"); //Flash Middleware
+  res.locals.success = req.flash("success");
   res.locals.error = req.flash("error");
   res.locals.currUser = req.user || null;
   next();
 });
 
 //Routes
+app.get("/", (req, res) => {
+  res.redirect("/listings");
+});
 app.use("/listings", listingRouter);
 app.use("/listings/:id/reviews", reviewRouter);
 app.use("/", userRouter);

@@ -43,6 +43,6 @@ router.get(
   isLoggedIn,
   isOwner,
   wrapAsync(listingController.renderEditForm),
-); //Edit Listing
+); 
 
 module.exports = router;

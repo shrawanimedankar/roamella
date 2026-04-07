@@ -10,8 +10,8 @@ cloudinary.config({
 const storage = new CloudinaryStorage({
   cloudinary: cloudinary,
   params: {
-    folder: "roamella_DEV",
-    allowedFormats: ["png", "jpeg", "jpg"],
+    folder: "roamella",
+    allowedFormats: ["png", "jpeg", "jpg","pdf"],
   },
 });
 

@@ -1,7 +1,6 @@
 //Joi Schema (validation rules)
 const Joi = require("joi");
 
-// ================= LISTING SCHEMA =================
 module.exports.listingSchema = Joi.object({
   listing: Joi.object({
     title: Joi.string().trim().min(3).max(100).required(),
@@ -12,7 +11,6 @@ module.exports.listingSchema = Joi.object({
       "number.base": "Price must be a number",
       "number.min": "Price cannot be negative",
     }),
-
     category: Joi.string()
       .valid(
         "Apartments",
@@ -36,12 +34,10 @@ module.exports.listingSchema = Joi.object({
       .messages({
         "any.only": "Invalid category selected",
       }),
-
     image: Joi.object({
       filename: Joi.string().allow("", null),
       url: Joi.string().allow("", null),
     }).allow(null),
-
     amenities: Joi.array().items(Joi.string()).min(10).required().messages({
       "array.base": "Amenities must be an array",
       "array.min": "Please select at least 10 amenities",
@@ -49,14 +45,12 @@ module.exports.listingSchema = Joi.object({
   }).required(),
 });
 
-// ================= REVIEW SCHEMA =================
 module.exports.reviewSchema = Joi.object({
   review: Joi.object({
     rating: Joi.number().min(1).max(5).required().messages({
       "number.min": "Rating must be at least 1",
       "number.max": "Rating cannot exceed 5",
     }),
-
     comment: Joi.string().trim().min(10).max(300).required().messages({
       "string.min": "Review must be at least 10 characters",
     }),

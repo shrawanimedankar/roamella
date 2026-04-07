@@ -3,7 +3,7 @@
     <div class="tax-toggle ">
       <div class="form-check-reverse form-switch">
         <input class="form-check-input" type="checkbox" role="switch" id="switchCheckDefault">
-        <label class="form-check-label" for="switchCheckDefault">Display total after taxes</label>
+        <label class="form-check-label" for="switchCheckDefault">Total price after taxes</label>
       </div>
     </div>
   </div>
@@ -125,7 +125,10 @@
               <div class="card-body">
                 <p class="listing-title"><%= listing.title %></p>
                 <p class="listing-price"> 
-                  &#8377; <%= listing.price.toLocaleString("en-IN") %> /night <i class="tax-info">&nbsp;&nbsp;+18% GST</i>
+                  <span class="price" data-price="<%= listing.price %>">
+                    ₹ <%= listing.price.toLocaleString("en-IN") %>
+                  </span>/night  <span class="small-text">(excl. taxes)</span>
+                  <span class="price-with-gst"></span>
                 </p>
               </div>
             </div>
@@ -134,19 +137,27 @@
       <% } %>
   </div>
 
-<script> 
+<script>
 // For Tax Toggle Switch
-    let taxSwitch = document.getElementById("switchCheckDefault")
-    taxSwitch.addEventListener("click", () => {
-      let taxInfo = document.getElementsByClassName("tax-info");
-      for (info of taxInfo) {
-        if (info.style.display != "inline") {
-          info.style.display = "inline";
-        } else {
-          info.style.display = "none";
-        }
-      }
-    });
+let taxSwitch = document.getElementById("switchCheckDefault");
+taxSwitch.addEventListener("click", () => {
+  let gstPrices = document.getElementsByClassName("price-with-gst");
+  let prices = document.getElementsByClassName("price");
+
+  for (let i = 0; i < prices.length; i++) {
+    let basePrice = parseFloat(prices[i].dataset.price);
+    if (taxSwitch.checked) {
+      let total = basePrice + basePrice * 0.18;
+
+      gstPrices[i].style.display = "block";  //show
+      gstPrices[i].innerHTML =
+        "₹ " + total.toLocaleString("en-IN") + " (incl. 18% GST)";
+    } else {
+      gstPrices[i].style.display = "none";   //hide completely
+      gstPrices[i].innerHTML = "";
+    }
+  }
+});
 
 //For Filter slider
     const filters = document.getElementById("filters");

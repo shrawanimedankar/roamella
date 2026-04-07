@@ -4,14 +4,17 @@
 
 ## 🔹 Features
 
-- CRUD functionality for property listings
-- RESTful APIs for listings, users, and reviews following MVC architecture
-- Secure authentication and role-based authorization using Passport.js
-- Image upload via **Multer** and optimized storage with **Cloudinary**
-- Review and rating system with ownership validation and protected routes
-- Category-based filtering and dynamic listing views using **EJS**
-- Responsive UI built with **Bootstrap**, ensuring cross-device compatibility
-- Server-side validation, flash messages, and form validations
+- Developed a full-stack property rental platform enabling users to browse, with CRUD functionality to create, read, update, and delete property listings
+- Developed RESTful APIs for users, listings, and reviews following MVC architecture
+- MongoDB Atlas used as a cloud-hosted database for storing users, listings, and reviews
+- Implemented secure authentication and role-based authorization using Passport.js with session management and protected routes
+- Host Info Card displaying host avatar, verification status, membership duration, and a contact button for better interaction
+- Integrated image upload using Multer and optimized cloud storage with Cloudinary
+- Review system with ownership validation and server-side form validations
+- Category-based filtering and dynamic listing views using EJS templates
+- Responsive user interface built with Bootstrap for seamless experience across devices
+- Applied hashed password security using PBKDF2 and added server-side validation, flash messages, and form error handling
+- Deployed application on Render.com ensuring live access
 
 ## 🔹 Tech Stack
 
@@ -37,11 +40,12 @@
 - Express-session
 - Connect-flash
 
-## 🔹 Authentication & Security
+## 🔹 Authentication & Authorization
 
-- Passwords are hashed using secure algorithms
+- Passwords are hashed using PBKDF2 secure algorithms
 - Protected routes via middleware
 - Only listing owners can modify or delete their listings
+- Review Authors can delete their reviews
 
 ## 🔹 Deployment (Render.com)
 

@@ -20,7 +20,7 @@ const sampleListings = [
     description:
       "Romantic hotel in Paris with elegant interiors and great ambiance. Ideal for couples looking for a memorable stay.",
     image: {
-      filename: "Hotels2",
+      filename: "listingimage",
       url: "https://res.cloudinary.com/dd6q3iewy/image/upload/v1774853206/roamella/Hotels2.jpg",
     },
     price: 2800,
